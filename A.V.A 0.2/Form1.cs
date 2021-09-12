@@ -12,6 +12,8 @@ namespace A.V.A_0._2
         private SpeechRecognitionEngine engine;
         private bool ouvindo = true;
         private SelecionarVoz selecionar = null;
+        private bool PrimeiroPlano = true;
+        private bool SegundoPlano = false;
         #endregion
 
         public void SpeechRec()
@@ -164,28 +166,87 @@ namespace A.V.A_0._2
                             }
                             if (grammar.Minimizar.Any(x => x == speech))
                             {
-                                this.WindowState = FormWindowState.Minimized;
-                                speaker.speak("A Janela Estar Minimizada");
+                                if (PrimeiroPlano == true)
+                                {
+                                    if (WindowState == FormWindowState.Minimized)
+                                        speaker.speak("A Janela Já estar Minimizada", "Isso Já Foi Feito", "Ja Diz Isso", "Ela Já Estar Minimizada");
+                                    else
+                                    {
+                                        this.WindowState = FormWindowState.Minimized;
+                                        speaker.speak("Deixando Janela em Minimizada");
+                                    }
+                                }
+                                else
+                                {
+                                    speaker.speak("Para Minimizar A Janela, Ela Deve Estar Em Primeiro Plano");
+                                }
                             }
                             if (grammar.Maximizar.Any(x => x == speech))
                             {
-                                this.WindowState = FormWindowState.Maximized;
-                                speaker.speak("A Janela Estar Maximizada");
+                                if (PrimeiroPlano == true)
+                                {
+                                    if (WindowState == FormWindowState.Maximized)
+                                    {
+                                        speaker.speak("A Janela Já estar Maximizada", "Isso Já Foi Feito", "Já Diz Isso", "Ela Já Estar Maximizada");
+                                    }
+                                    else
+                                    {
+                                        this.WindowState = FormWindowState.Maximized;
+                                        speaker.speak("Deixando Janela Maximizada");
+                                    }
+                                }
+                                else
+                                {
+                                    speaker.speak("Para Maximizar A Janela, Ela Deve Estar Em Primeiro Plano");
+                                }
                             }
                             if (grammar.TamanhoNormal.Any(x => x == speech))
                             {
-                                this.WindowState = FormWindowState.Normal;
-                                speaker.speak("A Janela Estar em Tamanho Normal");
+                                if (PrimeiroPlano == true)
+                                {
+                                    if (WindowState == FormWindowState.Normal)
+                                    {
+                                        speaker.speak("A Janela Já estar em Tamanho Normal", "Isso Já Foi Feito", "Já Diz Isso", "Ela Já Estar Em Tamanho Normal");
+                                    }
+                                    else
+                                    {
+                                        this.WindowState = FormWindowState.Normal;
+                                        speaker.speak("Deixando Janela em Tamanho Normal");
+                                    }
+                                }
+                                else
+                                {
+                                    speaker.speak("Para Deixar A Janela em Tamanho Normal, Ela Deve Estar Em Primeiro Plano");
+                                }
+
                             }
                             if (grammar.SegundoPlano.Any(x => x == speech))
                             {
-                                this.Hide();
-                                speaker.speak("A Janela estar em Segundo Plano");
+                                if (SegundoPlano == false)
+                                {
+                                    SegundoPlano = true;
+                                    this.Hide();
+                                    PrimeiroPlano = false;
+                                    speaker.speak("A Janela estar em Segundo Plano");
+                                }
+                                else
+                                {
+                                    speaker.speak("A Janela Já estar em Segundo Plano", "Isso Já Foi Feito", "Já Diz Isso", "Ela Já Estar Em Segundo Plano");
+                                }
                             }
                             if (grammar.PrimeiroPlano.Any(x => x == speech))
                             {
-                                this.Show();
-                                speaker.speak("A Janela estar em Primeiro Plano");
+                                if (SegundoPlano == true)
+                                {
+                                    SegundoPlano = false;
+                                    this.Show();
+                                    PrimeiroPlano = true;
+                                    speaker.speak("A Janela estar em Primeiro Plano");
+                                }
+                                else
+                                {
+                                    speaker.speak("A Janela Já estar em Primeiro Plano", "Isso Já Foi Feito", "Ja Diz Isso", "Ela Já Estar Em Primeiro Plano");
+                                }
                             }
 
                             #endregion
