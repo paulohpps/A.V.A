@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+﻿using Microsoft.Speech.Recognition;
+using System;
 using System.Drawing;
-using System.Globalization;
 using System.Linq;
-using Microsoft.Speech.Recognition;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace A.V.A_0._2
@@ -27,7 +21,7 @@ namespace A.V.A_0._2
 
                 engine = new SpeechRecognitionEngine();
                 engine.SetInputToDefaultAudioDevice();
-                
+
                 #region Grammar
 
                 Choices c_comandosDoSistema = new Choices();
@@ -45,6 +39,16 @@ namespace A.V.A_0._2
 
                 Grammar gNumbers = new Grammar(gbNumber);
                 gNumbers.Name = "calc";
+                #endregion
+
+                #region Interface
+
+                c_comandosDoSistema.Add(grammar.Minimizar.ToArray());
+                c_comandosDoSistema.Add(grammar.TamanhoNormal.ToArray());
+                c_comandosDoSistema.Add(grammar.Maximizar.ToArray());
+                c_comandosDoSistema.Add(grammar.SegundoPlano.ToArray());
+                c_comandosDoSistema.Add(grammar.PrimeiroPlano.ToArray());
+
                 #endregion
 
                 #region Outros
@@ -131,6 +135,36 @@ namespace A.V.A_0._2
                 {
                     case "sys":
 
+                        #region interface
+
+                        if (grammar.Minimizar.Any(x => x == speech))
+                        {
+                            this.WindowState = FormWindowState.Minimized;
+                            speaker.speak("A Janela Minimizada");
+                        }
+                        if (grammar.Maximizar.Any(x => x == speech))
+                        {
+                            this.WindowState = FormWindowState.Maximized;
+                            speaker.speak("A Janela Maximizada");
+                        }
+                        if (grammar.TamanhoNormal.Any(x => x == speech))
+                        {
+                            this.WindowState = FormWindowState.Normal;
+                            speaker.speak("A Janela em Tamanho Normal");
+                        }
+                        if (grammar.SegundoPlano.Any(x => x == speech))
+                        {
+                            this.Hide();
+                            speaker.speak("A Janela estar em Segundo Plano");
+                        }
+                        if (grammar.PrimeiroPlano.Any(x => x == speech))
+                        {
+                            this.Show();
+                            speaker.speak("A Janela estar em Primeiro Plano");
+                        }
+
+                        #endregion
+
                         #region outros
                         if (grammar.CpuUso.Any(x => x == speech))
                         {
@@ -139,14 +173,14 @@ namespace A.V.A_0._2
                         }
                         if (grammar.RAMUso.Any(x => x == speech))
                         {
-                           int ramtext = (int)RAM.NextValue();
-                           speaker.speak("O Uso de Memoria Estar em " + ramtext.ToString() + "%");
+                            int ramtext = (int)RAM.NextValue();
+                            speaker.speak("O Uso de Memoria Estar em " + ramtext.ToString() + "%");
                         }
                         if (grammar.StatusGerais.Any(x => x == speech))
                         {
-                           int cputext = (int)CPU.NextValue();
-                           int ramtext = (int)RAM.NextValue();
-                           speaker.speak("O Uso de Memoria Estar em " + ramtext.ToString() + "% ,e o Uso de CPU Estar em " + cputext.ToString() + "%");
+                            int cputext = (int)CPU.NextValue();
+                            int ramtext = (int)RAM.NextValue();
+                            speaker.speak("O Uso de Memoria Estar em " + ramtext.ToString() + "% ,e o Uso de CPU Estar em " + cputext.ToString() + "%");
                         }
                         #endregion
 

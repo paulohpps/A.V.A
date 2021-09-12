@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace A.V.A_0._2
 {
@@ -76,6 +72,69 @@ namespace A.V.A_0._2
             "Me Informe as Informações de Uso",
             "Por Favor me Diga as Informações de Uso",
             "Por Favor me Fale as Informações de Uso"
+        };
+
+        #endregion
+
+        #region interface
+
+        public static IList<string> Minimizar = new List<string>()
+        {
+            "Minimizar Janela",
+            "Minimizar",
+            "Minimize",
+            "Minimizar Interface",
+            "Diminuir janela",
+            "Diminuir Interface",
+            "Por Favor Minimize a Janela",
+            "Por Favor Minimize a Interface"
+        };
+
+        public static IList<string> TamanhoNormal = new List<string>()
+        {
+            "Deixar a Janela em Tamanho Normal",
+            "Deixar a Janela em Tamanho Normal",
+            "Tamanho Normal",
+            "Normalizar Janela",
+            "Por Favor Deixe a Janela em Tamanho Normal",
+            "Por Favor  Deixe a Interface em Tamanho Normal"
+        };
+        public static IList<string> Maximizar = new List<string>()
+        {
+            "Maximizar Janela",
+            "Maximizar",
+            "Maximize",
+            "Maximizar Interface",
+            "Aumentar janela",
+            "Aumentar Interface",
+            "Por Favor Maximizar a Janela",
+            "Por Favor Maximizar a Interface"
+        };
+        public static IList<string> SegundoPlano = new List<string>()
+        {
+            "Janela em Segundo Plano",
+            "Interface em Segundo Plano",
+            "Ocultar Janela",
+            "Ocultar Interface",
+            "Esconder Janela",
+            "Esconder Interface",
+            "Por Favor Ocultar a Janela",
+            "Por Favor Ocultar a Interface",
+            "Por Favor Esconder a Interface",
+            "Por Favor Esconder a Janela",
+            "Por Favor Deixar a Interface em Segundo Plano",
+            "Por Favor Deixar a Janela em Segundo Plano"
+        };
+        public static IList<string> PrimeiroPlano = new List<string>()
+        {
+            "Janela em Primeiro Plano",
+            "Interface em Primeiro Plano",
+            "Mostrar Janela",
+            "Mostrar Interface",
+            "Por Favor Mostre a Janela",
+            "Por Favor Mostre a Interface",
+            "Por Favor Deixar a Interface em Primeiro Plano",
+            "Por Favor Deixar a Janela em Primeiro Plano"
         };
 
         #endregion
@@ -211,5 +270,5 @@ namespace A.V.A_0._2
         #endregion
     }
 }
-    
+
 
