@@ -219,11 +219,11 @@ namespace A.V.A_0._2
             // 
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 72F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 63.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.label5.Location = new System.Drawing.Point(390, -7);
+            this.label5.Location = new System.Drawing.Point(388, -8);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(363, 118);
+            this.label5.Size = new System.Drawing.Size(363, 85);
             this.label5.TabIndex = 10;
             this.label5.Text = "A.V.A";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;

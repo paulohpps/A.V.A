@@ -354,7 +354,7 @@ namespace A.V.A_0._2
                 this.recs.ForeColor = Color.DodgerBlue;
         }
 
-        #endregion
+        
 
         private void circularProgressBar1_Click(object sender, EventArgs e)
         {
@@ -377,6 +377,7 @@ namespace A.V.A_0._2
         {
 
         }
+        #endregion
     }
 }
 
