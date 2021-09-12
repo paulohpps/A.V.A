@@ -165,11 +165,11 @@ namespace A.V.A_0._2
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.DodgerBlue;
             this.label2.Location = new System.Drawing.Point(47, 74);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(211, 37);
+            this.label2.Size = new System.Drawing.Size(144, 25);
             this.label2.TabIndex = 5;
             this.label2.Text = "Reconhecido:";
             // 
@@ -244,12 +244,12 @@ namespace A.V.A_0._2
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.RAMBAR);
             this.Controls.Add(this.CPUBAR);
             this.Controls.Add(this.recs);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.audiovol);
+            this.Controls.Add(this.label2);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(1920, 1080);
             this.MinimumSize = new System.Drawing.Size(1024, 640);

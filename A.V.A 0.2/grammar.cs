@@ -73,6 +73,35 @@ namespace A.V.A_0._2
             "Por Favor me Diga as Informações de Uso",
             "Por Favor me Fale as Informações de Uso"
         };
+        public static IList<string> RecStop = new List<string>()
+        {
+            "Para de me ouvir",
+            "Silencio",
+            "Fica Calada",
+            "Fica Calado",
+            "Fique Mudo",
+            "Fique Muda",
+            "Fique Surda",
+            "Fique Surdo"
+        };
+        public static IList<string> RecReturn = new List<string>()
+        {
+            "AVA",
+            "Ava Volte a me Ouvir",
+            "Volte a me Ouvir",
+            "Me Escute",
+            "Ava Voce Estar ai",
+            "Volte a Ouvir",
+            "Volte a Falar",
+            "Ola AVA"
+        };
+
+        public static IList<string> MudarVoz= new List<string>()
+        {
+            "Alterar Voz",
+            "Mudar Voz",
+            "Trocar Voz"
+        };
 
         #endregion
 

@@ -16,5 +16,14 @@ namespace A.V.A_0._2
                 sp.SpeakAsyncCancelAll();
             sp.SpeakAsync(text);
         }
+        public static void speak(params string[] texts)
+        {
+            Random rnd = new Random();
+            speak(texts[rnd.Next(0, texts.Length)]);
+        }
+        public static void SetVoz(string voice)
+        {
+            sp.SelectVoice(voice);
+        }
     }
 }

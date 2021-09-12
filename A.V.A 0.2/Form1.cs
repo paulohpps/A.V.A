@@ -10,7 +10,8 @@ namespace A.V.A_0._2
     {
         #region variaveis
         private SpeechRecognitionEngine engine;
-
+        private bool ouvindo = true;
+        private SelecionarVoz selecionar = null;
         #endregion
 
         public void SpeechRec()
@@ -53,9 +54,12 @@ namespace A.V.A_0._2
 
                 #region Outros
 
+                c_comandosDoSistema.Add(grammar.MudarVoz.ToArray());
                 c_comandosDoSistema.Add(grammar.CpuUso.ToArray());
                 c_comandosDoSistema.Add(grammar.RAMUso.ToArray());
                 c_comandosDoSistema.Add(grammar.StatusGerais.ToArray());
+                c_comandosDoSistema.Add(grammar.RecStop.ToArray());
+                c_comandosDoSistema.Add(grammar.RecReturn.ToArray());
 
                 #endregion
 
@@ -131,121 +135,148 @@ namespace A.V.A_0._2
             #region resposta
             if (conf > 0.35f)
             {
-                switch (e.Result.Grammar.Name)
+                if (grammar.RecStop.Any(x => x == speech))
                 {
-                    case "sys":
-
-                        #region interface
-
-                        if (grammar.Minimizar.Any(x => x == speech))
-                        {
-                            this.WindowState = FormWindowState.Minimized;
-                            speaker.speak("A Janela Minimizada");
-                        }
-                        if (grammar.Maximizar.Any(x => x == speech))
-                        {
-                            this.WindowState = FormWindowState.Maximized;
-                            speaker.speak("A Janela Maximizada");
-                        }
-                        if (grammar.TamanhoNormal.Any(x => x == speech))
-                        {
-                            this.WindowState = FormWindowState.Normal;
-                            speaker.speak("A Janela em Tamanho Normal");
-                        }
-                        if (grammar.SegundoPlano.Any(x => x == speech))
-                        {
-                            this.Hide();
-                            speaker.speak("A Janela estar em Segundo Plano");
-                        }
-                        if (grammar.PrimeiroPlano.Any(x => x == speech))
-                        {
-                            this.Show();
-                            speaker.speak("A Janela estar em Primeiro Plano");
-                        }
-
-                        #endregion
-
-                        #region outros
-                        if (grammar.CpuUso.Any(x => x == speech))
-                        {
-                            int cputext = (int)CPU.NextValue();
-                            speaker.speak("O Uso de CPU Estar em " + cputext.ToString() + "%");
-                        }
-                        if (grammar.RAMUso.Any(x => x == speech))
-                        {
-                            int ramtext = (int)RAM.NextValue();
-                            speaker.speak("O Uso de Memoria Estar em " + ramtext.ToString() + "%");
-                        }
-                        if (grammar.StatusGerais.Any(x => x == speech))
-                        {
-                            int cputext = (int)CPU.NextValue();
-                            int ramtext = (int)RAM.NextValue();
-                            speaker.speak("O Uso de Memoria Estar em " + ramtext.ToString() + "% ,e o Uso de CPU Estar em " + cputext.ToString() + "%");
-                        }
-                        #endregion
-
-                        #region data e hora
-
-                        if (grammar.Horas.Any(x => x == speech))
-                        {
-                            resp.horas();
-                        }
-                        if (grammar.Data.Any(x => x == speech))
-                        {
-                            resp.data();
-                        }
-
-                        #endregion
-
-                        #region abrir
-
-                        if (grammar.Chrome.Any(x => x == speech))
-                            resp.chrome();
-                        if (grammar.Notepad.Any(x => x == speech))
-                            resp.notepad();
-                        if (grammar.Cmd.Any(x => x == speech))
-                            resp.cmd();
-                        if (grammar.Explorer.Any(x => x == speech))
-                            resp.explorer();
-                        if (grammar.OpenDocuments.Any(x => x == speech))
-                            resp.OpenDocuments();
-                        if (grammar.OpenImagens.Any(x => x == speech))
-                            resp.OpenImages();
-                        if (grammar.OpenVideos.Any(x => x == speech))
-                            resp.OpenVideos();
-                        if (grammar.OpenDownloads.Any(x => x == speech))
-                            resp.OpenDownload();
-                        if (grammar.Steam.Any(x => x == speech))
-                            resp.steam();
-                        if (grammar.Discord.Any(x => x == speech))
-                            resp.Discord();
-                        #endregion
-
-                        #region fechar
-
-                        if (grammar.ChromeStop.Any(x => x == speech))
-                            resp.chromestop();
-
-                        if (grammar.NotaPadStop.Any(x => x == speech))
-                            resp.notestop();
-
-                        if (grammar.DiscordStop.Any(x => x == speech))
-                            resp.discordstop();
-                        if (grammar.ExploreStop.Any(x => x == speech))
-                            resp.ExploreStop();
-
-                        #endregion
-
-                        break;
-
-                    case "calc":
-
-                        speaker.speak(Calculadora.Solver(speech));
-
-                        break;
-
+                    ouvindo = false;
+                    speaker.speak("Não estou Mais Ouvindo");
+                    this.label2.Text = "Reconhecido: DESLIGADO";
+                    this.label2.ForeColor = Color.Red;
                 }
-                this.label2.Text = "Reconhecido: " + speech;
+                else if (grammar.RecReturn.Any(x => x == speech))
+                {
+                    ouvindo = true;
+                    speaker.speak("Olá Estou Te Escutando");
+                    this.label2.ForeColor = Color.DodgerBlue;
+                }
+                if (ouvindo == true)
+                {
+                    this.label2.Text = "Reconhecido: " + speech;
+                    switch (e.Result.Grammar.Name)
+                    {
+                        case "sys":
+
+                            #region interface
+                            if (grammar.MudarVoz.Any(x => x == speech))
+                            {
+                                selecionar = new SelecionarVoz();
+                                selecionar.Show();
+                                speaker.speak("Selecione a Voz Desejada");
+                            }
+                            if (grammar.Minimizar.Any(x => x == speech))
+                            {
+                                this.WindowState = FormWindowState.Minimized;
+                                speaker.speak("A Janela Estar Minimizada");
+                            }
+                            if (grammar.Maximizar.Any(x => x == speech))
+                            {
+                                this.WindowState = FormWindowState.Maximized;
+                                speaker.speak("A Janela Estar Maximizada");
+                            }
+                            if (grammar.TamanhoNormal.Any(x => x == speech))
+                            {
+                                this.WindowState = FormWindowState.Normal;
+                                speaker.speak("A Janela Estar em Tamanho Normal");
+                            }
+                            if (grammar.SegundoPlano.Any(x => x == speech))
+                            {
+                                this.Hide();
+                                speaker.speak("A Janela estar em Segundo Plano");
+                            }
+                            if (grammar.PrimeiroPlano.Any(x => x == speech))
+                            {
+                                this.Show();
+                                speaker.speak("A Janela estar em Primeiro Plano");
+                            }
+
+                            #endregion
+
+                            #region outros
+                            if (grammar.CpuUso.Any(x => x == speech))
+                            {
+                                int cputext = (int)CPU.NextValue();
+                                speaker.speak("O Uso de CPU Estar em " + cputext.ToString() + "%");
+                            }
+                            if (grammar.RAMUso.Any(x => x == speech))
+                            {
+                                int ramtext = (int)RAM.NextValue();
+                                speaker.speak("O Uso de Memoria Estar em " + ramtext.ToString() + "%");
+                            }
+                            if (grammar.StatusGerais.Any(x => x == speech))
+                            {
+                                int cputext = (int)CPU.NextValue();
+                                int ramtext = (int)RAM.NextValue();
+                                speaker.speak("O Uso de Memoria Estar em " + ramtext.ToString() + "% ,e o Uso de CPU Estar em " + cputext.ToString() + "%");
+                            }
+
+                            if (grammar.RecStop.Any(x => x == speech))
+                            {
+                                resp.horas();
+                            }
+                            #endregion
+
+                            #region data e hora
+
+                            if (grammar.Horas.Any(x => x == speech))
+                            {
+                                resp.horas();
+                            }
+                            if (grammar.Data.Any(x => x == speech))
+                            {
+                                resp.data();
+                            }
+
+                            #endregion
+
+                            #region abrir
+
+                            if (grammar.Chrome.Any(x => x == speech))
+                                resp.chrome();
+                            if (grammar.Notepad.Any(x => x == speech))
+                                resp.notepad();
+                            if (grammar.Cmd.Any(x => x == speech))
+                                resp.cmd();
+                            if (grammar.Explorer.Any(x => x == speech))
+                                resp.explorer();
+                            if (grammar.OpenDocuments.Any(x => x == speech))
+                                resp.OpenDocuments();
+                            if (grammar.OpenImagens.Any(x => x == speech))
+                                resp.OpenImages();
+                            if (grammar.OpenVideos.Any(x => x == speech))
+                                resp.OpenVideos();
+                            if (grammar.OpenDownloads.Any(x => x == speech))
+                                resp.OpenDownload();
+                            if (grammar.Steam.Any(x => x == speech))
+                                resp.steam();
+                            if (grammar.Discord.Any(x => x == speech))
+                                resp.Discord();
+                            #endregion
+
+                            #region fechar
+
+                            if (grammar.ChromeStop.Any(x => x == speech))
+                                resp.chromestop();
+
+                            if (grammar.NotaPadStop.Any(x => x == speech))
+                                resp.notestop();
+
+                            if (grammar.DiscordStop.Any(x => x == speech))
+                                resp.discordstop();
+                            if (grammar.ExploreStop.Any(x => x == speech))
+                                resp.ExploreStop();
+
+                            #endregion
+
+                            break;
+
+                        case "calc":
+
+                            speaker.speak(Calculadora.Solver(speech));
+
+                            break;
+
+                    }
+                }
+                
             }
             #endregion
         }
