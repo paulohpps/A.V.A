@@ -26,6 +26,13 @@ namespace A.V.A_0._2
         #endregion
 
         #region OutroComandos
+        public static IList<string> stopava = new List<string>()
+        {
+            "Durma",
+            "Va Dormi",
+            "Feche Se",
+            "Pode Descansar Agora"
+        };
 
         public static IList<string> CpuUso = new List<string>()
         {
@@ -176,7 +183,7 @@ namespace A.V.A_0._2
             "Abrir Chrome",
             "Abra o Google",
             "Abra o Chrome",
-            "Abra o Google Chrome",
+            "Abra o Google Chrome"
         };
         public static IList<string> Notepad = new List<string>()
         {
@@ -215,7 +222,8 @@ namespace A.V.A_0._2
             "Abrir Meus Documentos",
             "Abra o Documentos",
             "Abra o Meus Documentos",
-            "Documentos"
+            "Documentos",
+            "Pasta Documentos"
         };
         public static IList<string> OpenVideos = new List<string>()
         {
@@ -223,7 +231,8 @@ namespace A.V.A_0._2
             "Abrir Meus Videos",
             "Abra o Videos",
             "Abra o Meus Videos",
-            "Videos"
+            "Videos",
+            "Pasta Videos"
         };
         public static IList<string> OpenImagens = new List<string>()
         {
@@ -231,7 +240,8 @@ namespace A.V.A_0._2
             "Abrir Minhas Imagens",
             "Abra o Imagens",
             "Abra o Minhas Imagens",
-            "Imagens"
+            "Imagens",
+            "Pasta Imagens"
         };
         public static IList<string> Discord = new List<string>()
         {
@@ -246,7 +256,25 @@ namespace A.V.A_0._2
             "Abrir o Downloads",
             "Abra o Downloads",
             "Abra  Downloads",
-            "Downloads"
+            "Downloads",
+            "Pasta Downloads"
+        };
+        public static IList<string> OpenDesktop= new List<string>()
+        {
+            "Abrir Desktop",
+            "Abrir o Desktop",
+            "Abra o Desktop",
+            "Abra  Desktop",
+            "Desktop",
+            "Pasta Desktop"
+        };
+        public static IList<string> OpenAppData = new List<string>()
+        {
+            "Abrir AppData",
+            "Abrir o AppData",
+            "Abra o AppData",
+            "Abra  AppData",
+            "Pasta AppData"
         };
 
 
@@ -297,6 +325,73 @@ namespace A.V.A_0._2
 
 
         #endregion
+
+        #region Sites
+        public static IList<string> Youtube = new List<string>()
+        {
+            "Abrir Youtube",
+            "Por Favor Abra o Youtube",
+            "Abra o Youtube",
+            "Youtube"
+        };
+        public static IList<string> Twitch = new List<string>()
+        {
+            "Abrir Tuiti",
+            "Por Favor Abra o Tuiti",
+            "Abra o Tuiti",
+            "Tuiti"
+        };
+        public static IList<string> Facebook = new List<string>()
+        {
+            "Abrir Facebook",
+            "Por Favor Abra o Facebook",
+            "Abra o Facebook",
+            "Facebook"
+        };
+        public static IList<string> Wikipedia = new List<string>()
+        {
+            "Abrir Wikipédia",
+            "Por Favor Abra o Wikipédia",
+            "Abra o Wikipédia",
+            "Wikipédia"
+        };
+        public static IList<string> Instagram = new List<string>()
+        {
+            "Abrir Instagram",
+            "Por Favor Abra o Instagram",
+            "Abra o Instagram",
+            "Instagram"
+        };
+        public static IList<string> whatsapp = new List<string>()
+        {
+            "Abrir Whatsapp",
+            "Por Favor Abra o Whatsapp",
+            "Abra o Whatsapp",
+            "Whatsapp"
+        };
+        public static IList<string> twitter = new List<string>()
+        {
+            "Abrir Tuiter",
+            "Por Favor Abra o Tuiter",
+            "Abra o Tuiter",
+            "Tuiter"
+        };
+        public static IList<string> Netflix = new List<string>()
+        {
+            "Abrir Netflix",
+            "Por Favor Abra o Netflix",
+            "Abra o Netflix",
+            "Netflix"
+        };
+        public static IList<string> Amazon = new List<string>()
+        {
+            "Abrir Amazon",
+            "Por Favor Abra o Amazon",
+            "Abra o Amazon",
+            "Amazon"
+        };
+        #endregion
+
     }
 }
 

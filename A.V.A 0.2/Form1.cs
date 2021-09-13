@@ -3,6 +3,7 @@ using System;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using System.Threading.Tasks;
 
 namespace A.V.A_0._2
 {
@@ -55,7 +56,7 @@ namespace A.V.A_0._2
                 #endregion
 
                 #region Outros
-
+                c_comandosDoSistema.Add(grammar.stopava.ToArray());
                 c_comandosDoSistema.Add(grammar.MudarVoz.ToArray());
                 c_comandosDoSistema.Add(grammar.CpuUso.ToArray());
                 c_comandosDoSistema.Add(grammar.RAMUso.ToArray());
@@ -79,6 +80,8 @@ namespace A.V.A_0._2
                 c_comandosDoSistema.Add(grammar.OpenImagens.ToArray());
                 c_comandosDoSistema.Add(grammar.OpenDownloads.ToArray());
                 c_comandosDoSistema.Add(grammar.OpenVideos.ToArray());
+                c_comandosDoSistema.Add(grammar.OpenDesktop.ToArray());
+                c_comandosDoSistema.Add(grammar.OpenAppData.ToArray());
                 c_comandosDoSistema.Add(grammar.Steam.ToArray());
                 c_comandosDoSistema.Add(grammar.Discord.ToArray());
 
@@ -89,6 +92,18 @@ namespace A.V.A_0._2
                 c_comandosDoSistema.Add(grammar.ExploreStop.ToArray());
                 c_comandosDoSistema.Add(grammar.NotaPadStop.ToArray());
                 c_comandosDoSistema.Add(grammar.DiscordStop.ToArray());
+                #endregion
+
+                #region site
+                c_comandosDoSistema.Add(grammar.Youtube.ToArray());
+                c_comandosDoSistema.Add(grammar.Twitch.ToArray());
+                c_comandosDoSistema.Add(grammar.Facebook.ToArray());
+                c_comandosDoSistema.Add(grammar.Wikipedia.ToArray());
+                c_comandosDoSistema.Add(grammar.Instagram.ToArray());
+                c_comandosDoSistema.Add(grammar.whatsapp.ToArray());
+                c_comandosDoSistema.Add(grammar.twitter.ToArray());
+                c_comandosDoSistema.Add(grammar.Netflix.ToArray());
+                c_comandosDoSistema.Add(grammar.Amazon.ToArray());
                 #endregion
 
                 GrammarBuilder gb_comandosDoSistema = new GrammarBuilder();
@@ -152,7 +167,7 @@ namespace A.V.A_0._2
                 }
                 if (ouvindo == true)
                 {
-                    this.label2.Text = "Reconhecido: " + speech;
+                    this.label2.Text = "Reconhecido: " + speech.Replace("Tuiter", "Twitter").Replace("Tuiti", "Twitch");
                     switch (e.Result.Grammar.Name)
                     {
                         case "sys":
@@ -173,7 +188,7 @@ namespace A.V.A_0._2
                                     else
                                     {
                                         this.WindowState = FormWindowState.Minimized;
-                                        speaker.speak("Deixando Janela em Minimizada");
+                                        speaker.speak("Deixando Janela Minimizada");
                                     }
                                 }
                                 else
@@ -227,7 +242,7 @@ namespace A.V.A_0._2
                                     SegundoPlano = true;
                                     this.Hide();
                                     PrimeiroPlano = false;
-                                    speaker.speak("A Janela estar em Segundo Plano");
+                                    speaker.speak("Deixando Janela em Segundo Plano");
                                 }
                                 else
                                 {
@@ -241,7 +256,7 @@ namespace A.V.A_0._2
                                     SegundoPlano = false;
                                     this.Show();
                                     PrimeiroPlano = true;
-                                    speaker.speak("A Janela estar em Primeiro Plano");
+                                    speaker.speak("Deixando Janela em Primeiro Plano");
                                 }
                                 else
                                 {
@@ -252,6 +267,12 @@ namespace A.V.A_0._2
                             #endregion
 
                             #region outros
+                            if (grammar.stopava.Any(x => x == speech))
+                            {
+                                speaker.speak("Até a proxima", "Até mais", "Estou Me Desligando");
+                                System.Threading.Thread.Sleep(5000);
+                                this.Close();
+                            }
                             if (grammar.CpuUso.Any(x => x == speech))
                             {
                                 int cputext = (int)CPU.NextValue();
@@ -288,6 +309,28 @@ namespace A.V.A_0._2
 
                             #endregion
 
+                            #region site
+                            if (grammar.Youtube.Any(x => x == speech))
+                                resp.Youtube();
+                            if (grammar.Twitch.Any(x => x == speech))
+                                resp.Twitch();
+                            if (grammar.Facebook.Any(x => x == speech))
+                                resp.Facebook();
+                            if (grammar.Wikipedia.Any(x => x == speech))
+                                resp.Wikipedia();
+                            if (grammar.Instagram.Any(x => x == speech))
+                                resp.Instagram();
+                            if (grammar.whatsapp.Any(x => x == speech))
+                                resp.whatsapp();
+                            if (grammar.twitter.Any(x => x == speech))
+                                resp.twitter();
+                            if (grammar.Netflix.Any(x => x == speech))
+                                resp.Netflix();
+                            if (grammar.Amazon.Any(x => x == speech))
+                                resp.Amazon();
+
+                            #endregion
+
                             #region abrir
 
                             if (grammar.Chrome.Any(x => x == speech))
@@ -306,6 +349,10 @@ namespace A.V.A_0._2
                                 resp.OpenVideos();
                             if (grammar.OpenDownloads.Any(x => x == speech))
                                 resp.OpenDownload();
+                            if (grammar.OpenDesktop.Any(x => x == speech))
+                                resp.OpenDesktop();
+                            if (grammar.OpenAppData.Any(x => x == speech))
+                                resp.OpenAppData();
                             if (grammar.Steam.Any(x => x == speech))
                                 resp.steam();
                             if (grammar.Discord.Any(x => x == speech))

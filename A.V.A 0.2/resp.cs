@@ -129,6 +129,32 @@ namespace A.V.A_0._2
                 speaker.speak("Não foi Possivel essa pasta");
             }
         }
+        public static void OpenDesktop()
+        {
+            try
+            { 
+                String diretorio = System.Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                Process.Start("explorer.exe", diretorio);
+                speaker.speak("A Pasta da Desktop foi Aberta");
+            }
+            catch
+            {
+                speaker.speak("Não foi Possivel essa pasta");
+            }
+        }
+        public static void OpenAppData()
+        {
+            try
+            {
+                String diretorio = System.Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+                Process.Start("explorer.exe", diretorio);
+                speaker.speak("A Pasta App Data foi Aberta");
+            }
+            catch
+            {
+                speaker.speak("Não foi Possivel essa pasta");
+            }
+        }
 
         public static void OpenDownload()
         {
@@ -142,6 +168,56 @@ namespace A.V.A_0._2
                 speaker.speak("Não foi Possivel essa pasta");
             }
         }
+
+        #endregion
+
+        #region sites
+        public static void Youtube()
+        {
+            Process.Start("chrome.exe", @"https://www.youtube.com/");
+            speaker.speak("O Youtube foi Aberto");
+        }
+        public static void Twitch()
+        {
+            Process.Start("chrome.exe", @"https://www.twitch.tv/");
+            speaker.speak("A Twitch foi Aberta");
+        }
+        public static void Facebook()
+        {
+            Process.Start("chrome.exe", @"https://www.facebook.com/");
+            speaker.speak("O Facebook foi Aberto");
+        }
+        public static void Wikipedia()
+        {
+            Process.Start("chrome.exe", @"https://pt.wikipedia.org/");
+            speaker.speak("A Wikipedia foi Aberta");
+        }
+        public static void Instagram()
+        {
+            Process.Start("chrome.exe", @"https://www.instagram.com/");
+            speaker.speak("O Instagram foi Aberto");
+        }
+        public static void whatsapp()
+        {
+            Process.Start("chrome.exe", @"https://web.whatsapp.com/");
+            speaker.speak("O Whatsapp foi Aberto");
+        }
+        public static void twitter()
+        {
+            Process.Start("chrome.exe", @"https://twitter.com/");
+            speaker.speak("O Twitter foi Aberto");
+        }
+        public static void Netflix()
+        {
+            Process.Start("chrome.exe", @"https://www.netflix.com/");
+            speaker.speak("O Netflix foi Aberto");
+        }
+        public static void Amazon()
+        {
+            Process.Start("chrome.exe", @"https://www.amazon.com.br/");
+            speaker.speak("A Amazon foi Aberta");
+        }
+
 
         #endregion
 
