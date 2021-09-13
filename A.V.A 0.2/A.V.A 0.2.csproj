@@ -162,5 +162,8 @@
   <ItemGroup>
     <Content Include="Resources\ico.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="instalador\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

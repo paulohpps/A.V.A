@@ -167,7 +167,7 @@ namespace A.V.A_0._2
                 }
                 if (ouvindo == true)
                 {
-                    this.label2.Text = "Reconhecido: " + speech.Replace("Tuiter", "Twitter").Replace("Tuiti", "Twitch");
+                    this.label2.Text = "Reconhecido: " + speech.Replace("Tuiter", "Twitter").Replace("Tuiti", "Twitch").Replace();
                     switch (e.Result.Grammar.Name)
                     {
                         case "sys":
@@ -269,7 +269,7 @@ namespace A.V.A_0._2
                             #region outros
                             if (grammar.stopava.Any(x => x == speech))
                             {
-                                speaker.speak("Até a proxima", "Até mais", "Estou Me Desligando");
+                                speaker.speak("Até a próxima", "Até mais", "Estou Me Desligando");
                                 System.Threading.Thread.Sleep(5000);
                                 this.Close();
                             }

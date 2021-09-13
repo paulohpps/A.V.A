@@ -364,10 +364,10 @@ namespace A.V.A_0._2
         };
         public static IList<string> whatsapp = new List<string>()
         {
-            "Abrir Whatsapp",
-            "Por Favor Abra o Whatsapp",
-            "Abra o Whatsapp",
-            "Whatsapp"
+            "Abrir Uatizape",
+            "Por Favor Abra o Uatizape",
+            "Abra o Uatizape",
+            "Uatizape"
         };
         public static IList<string> twitter = new List<string>()
         {
