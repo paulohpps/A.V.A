@@ -179,11 +179,10 @@ namespace A.V.A_0._2
         public static IList<string> Chrome = new List<string>()
         {
             "Abrir Google",
-            "Abrir Google Chrome",
+            "Abrir Navegador",
             "Abrir Chrome",
             "Abra o Google",
-            "Abra o Chrome",
-            "Abra o Google Chrome"
+            "Abra o Navegador"
         };
         public static IList<string> Notepad = new List<string>()
         {

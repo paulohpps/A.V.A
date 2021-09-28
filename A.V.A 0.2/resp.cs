@@ -29,8 +29,8 @@ namespace A.V.A_0._2
         {
             try
             {
-                Process.Start("chrome.exe");
-                speaker.speak("O Google Chrome foi Aberto");
+                Process.Start(@"https://www.google.com/");
+                speaker.speak("O Google foi aberto");
             }
             catch
             {
@@ -174,47 +174,47 @@ namespace A.V.A_0._2
         #region sites
         public static void Youtube()
         {
-            Process.Start("chrome.exe", @"https://www.youtube.com/");
+            Process.Start(@"https://www.youtube.com/");
             speaker.speak("O Youtube foi Aberto");
         }
         public static void Twitch()
         {
-            Process.Start("chrome.exe", @"https://www.twitch.tv/");
+            Process.Start(@"https://www.twitch.tv/");
             speaker.speak("A Twitch foi Aberta");
         }
         public static void Facebook()
         {
-            Process.Start("chrome.exe", @"https://www.facebook.com/");
+            Process.Start(@"https://www.facebook.com/");
             speaker.speak("O Facebook foi Aberto");
         }
         public static void Wikipedia()
         {
-            Process.Start("chrome.exe", @"https://pt.wikipedia.org/");
+            Process.Start(@"https://pt.wikipedia.org/");
             speaker.speak("A Wikipedia foi Aberta");
         }
         public static void Instagram()
         {
-            Process.Start("chrome.exe", @"https://www.instagram.com/");
+            Process.Start(@"https://www.instagram.com/");
             speaker.speak("O Instagram foi Aberto");
         }
         public static void whatsapp()
         {
-            Process.Start("chrome.exe", @"https://web.whatsapp.com/");
+            Process.Start(@"https://web.whatsapp.com/");
             speaker.speak("O Whatsapp foi Aberto");
         }
         public static void twitter()
         {
-            Process.Start("chrome.exe", @"https://twitter.com/");
+            Process.Start(@"https://twitter.com/");
             speaker.speak("O Twitter foi Aberto");
         }
         public static void Netflix()
         {
-            Process.Start("chrome.exe", @"https://www.netflix.com/");
+            Process.Start(@"https://www.netflix.com/");
             speaker.speak("O Netflix foi Aberto");
         }
         public static void Amazon()
         {
-            Process.Start("chrome.exe", @"https://www.amazon.com.br/");
+            Process.Start(@"https://www.amazon.com.br/");
             speaker.speak("A Amazon foi Aberta");
         }
 

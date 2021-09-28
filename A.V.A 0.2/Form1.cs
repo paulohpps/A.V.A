@@ -32,7 +32,7 @@ namespace A.V.A_0._2
                 Choices cNumbers = new Choices();
 
                 #region Numbers
-                for (int i = 0; i <= 1; i++)
+                for (int i = 0; i <= 100; i++)
                 {
                     cNumbers.Add(i.ToString());
                 }
@@ -167,7 +167,7 @@ namespace A.V.A_0._2
                 }
                 if (ouvindo == true)
                 {
-                    this.label2.Text = "Reconhecido: " + speech.Replace("Tuiter", "Twitter").Replace("Tuiti", "Twitch").Replace();
+                    this.label2.Text = "Reconhecido: " + speech.Replace("Tuiter", "Twitter").Replace("Tuiti", "Twitch").Replace("Uatizape", "Whatsapp");
                     switch (e.Result.Grammar.Name)
                     {
                         case "sys":
