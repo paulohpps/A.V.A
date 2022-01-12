@@ -1,5 +1,6 @@
 # A.V.A
-A.V.A e uma inteligencia virtual em desenvolvimento
+
+# Estado: 🚧desenvolvimento🚧
 
 Requerimentos:
 - Microsoft Speech SDK
