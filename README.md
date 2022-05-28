@@ -1,6 +1,6 @@
 # A.V.A
 
-# Estado: 🚧desenvolvimento🚧
+# Estado: 🚧Abandonado🚧
 
 Requerimentos:
 - Microsoft Speech SDK
